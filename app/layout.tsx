@@ -2,6 +2,7 @@ import { Outfit } from 'next/font/google'
 import type { Metadata } from 'next'
 
 import { cn } from '@/lib/utils'
+import Header from '@/components/Header'
 import './globals.css'
 
 const outfit = Outfit({
@@ -22,6 +23,7 @@ export default function RootLayout({
   return (
     <html lang='en'>
       <body className={cn(outfit.variable, 'font-sans text-slate-800')}>
+        <Header />
         {children}
       </body>
     </html>
