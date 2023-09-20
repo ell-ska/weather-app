@@ -1,8 +1,13 @@
-import './globals.css'
+import { Outfit } from 'next/font/google'
 import type { Metadata } from 'next'
-import { Inter } from 'next/font/google'
 
-const inter = Inter({ subsets: ['latin'] })
+import { cn } from '@/lib/utils'
+import './globals.css'
+
+const outfit = Outfit({
+  subsets: ['latin'],
+  variable: '--font-outfit',
+})
 
 export const metadata: Metadata = {
   title: 'Create Next App',
@@ -15,8 +20,10 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="en">
-      <body className={inter.className}>{children}</body>
+    <html lang='en'>
+      <body className={cn(outfit.variable, 'font-sans text-slate-800')}>
+        {children}
+      </body>
     </html>
   )
 }
