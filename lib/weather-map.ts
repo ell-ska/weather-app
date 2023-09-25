@@ -28,7 +28,7 @@ import snow from '@/public/snow.jpg'
 import sunny from '@/public/sunny.jpg'
 import thunder from '@/public/thunder.jpg'
 
-type Weather = {
+export type Weather = {
   code: number
   desc: string
   icon: LucideIcon
