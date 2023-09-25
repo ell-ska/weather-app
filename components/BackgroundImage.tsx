@@ -1,11 +1,17 @@
 import { weatherMap } from '@/lib/weather-map'
 
-const BackgroundImage = () => {
+type BackgroundImageProps = {
+  conditionCode: number
+}
+
+const BackgroundImage = ({ conditionCode }: BackgroundImageProps) => {
+  const condition = weatherMap.find(item => item.code === conditionCode)
+
   return (
     <div
       className='absolute inset-0 -z-10 bg-cover bg-center bg-blend-overlay'
       style={{
-        backgroundImage: `url(${weatherMap[1].image.src}), linear-gradient(#ffffff33,#ffffff33)`,
+        backgroundImage: `url(${condition?.image.src}), linear-gradient(#ffffff33,#ffffff33)`,
       }}
     />
   )

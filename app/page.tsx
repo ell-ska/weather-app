@@ -4,18 +4,24 @@ import CurrentWeather from '@/components/CurrentWeather'
 import WeatherInfo from '@/components/Info/WeatherInfo'
 import { getCurrentWeather } from '@/lib/api-routes'
 
+export const revalidate = 60
+
 const Home = async () => {
   const weather = await getCurrentWeather('stockholm')
-  console.log(weather)
 
   return (
     <main className='flex min-h-screen flex-col'>
-      <BackgroundImage />
+      <BackgroundImage
+        conditionCode={weather?.data?.current?.condition?.code}
+      />
       <Header
         city={weather?.data?.location?.name}
         time={weather?.data?.location?.localtime}
       />
-      <CurrentWeather />
+      <CurrentWeather
+        condition={weather?.data?.current?.condition}
+        temperature={weather?.data?.current?.temp_c}
+      />
       <WeatherInfo />
     </main>
   )
