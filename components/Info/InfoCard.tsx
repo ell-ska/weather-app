@@ -16,7 +16,9 @@ const InfoCard = ({ icon, title, value, cardType }: InfoCardProps) => {
       <div className='flex gap-4'>
         <IconWithBackground icon={icon} />
         <div className='flex flex-col gap-[2px]'>
-          <span className='text-sm text-slate-500'>{title}</span>
+          <span className='whitespace-nowrap text-sm text-slate-500'>
+            {title}
+          </span>
           <span className='font-semibold'>{value}</span>
         </div>
       </div>
@@ -24,7 +26,7 @@ const InfoCard = ({ icon, title, value, cardType }: InfoCardProps) => {
   } else if (cardType === 'horizontal-wide') {
     return (
       <div className='grid grid-cols-3 items-center'>
-        <span className='text-slate-500'>{title}</span>
+        <span className='whitespace-nowrap text-slate-500'>{title}</span>
         <IconWithBackground icon={icon} className='justify-self-center' />
         <span className='justify-self-end font-semibold'>{value}</span>
       </div>

@@ -14,7 +14,7 @@ const testWeather = [
 
 const WeatherInfo = () => {
   return (
-    <section className='flex gap-6 rounded-t-2xl bg-white px-20 py-6'>
+    <section className='scrollbar-hidden grid snap-x snap-mandatory grid-cols-[repeat(3,100%)] gap-6 overflow-x-scroll rounded-t-2xl bg-white py-6 lg:grid-cols-[minmax(0,1fr),2px,minmax(0,1fr),2px,minmax(0,1fr)] lg:px-20'>
       <InfoSection
         cardType='horizontal-compact'
         title='Weather now'
@@ -23,7 +23,7 @@ const WeatherInfo = () => {
       <Separator.Root
         decorative={true}
         orientation='vertical'
-        className='w-[2px] rounded-full bg-slate-200'
+        className='hidden w-[2px] rounded-full bg-slate-200 lg:block'
       />
       <InfoSection
         cardType='vertical'
@@ -33,7 +33,7 @@ const WeatherInfo = () => {
       <Separator.Root
         decorative={true}
         orientation='vertical'
-        className='w-[2px] rounded-full bg-slate-200'
+        className='hidden w-[2px] rounded-full bg-slate-200 lg:block'
       />
       <InfoSection
         cardType='horizontal-wide'

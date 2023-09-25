@@ -10,5 +10,10 @@ module.exports = {
     fontFamily: {
       sans: ['var(--font-outfit)'],
     },
+    extend: {
+      minHeight: {
+        screen: ['100vh', '100svh'],
+      },
+    },
   },
 }
