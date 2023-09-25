@@ -1,24 +1,29 @@
 import axios from 'axios'
 
-const BASE_URL = 'http://api.weatherapi.com/v1'
+const BASE_URL = 'https://api.weatherapi.com/v1'
 const API_KEY = process.env.API_KEY
 
-const getStartCityCurrentWeather = async () => {
+const getCurrentWeather = async (city: string) => {
   try {
     const { data, status, statusText } = await axios.get(
       BASE_URL + '/current.json',
       {
         params: {
           key: API_KEY,
-          q: 'stockholm',
+          q: city,
         },
       },
     )
 
     return { data, status, statusText }
-  } catch (error) {
-    console.log(error)
+  } catch (error: any) {
+    return {
+      error: {
+        status: error?.response?.status,
+        statusText: error?.response?.statusText,
+      },
+    }
   }
 }
 
-export { getStartCityCurrentWeather }
+export { getCurrentWeather }
