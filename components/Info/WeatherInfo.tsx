@@ -1,24 +1,25 @@
 'use client'
 
-import { Droplet, Thermometer, Umbrella, Wind } from 'lucide-react'
 import * as Separator from '@radix-ui/react-separator'
 
 import InfoSection from './InfoSection'
+import {
+  generateWeatherNow,
+  generateWeatherToday,
+  generateWeatherComingDays,
+} from '@/lib/generate-content'
 
-const testWeather = [
-  { icon: <Thermometer />, title: 'Feels like', value: '15°' },
-  { icon: <Wind />, title: 'Wind', value: '10km/h' },
-  { icon: <Umbrella />, title: 'Precipitation', value: '20%' },
-  { icon: <Droplet />, title: 'Humidity', value: '79%' },
-]
+const WeatherInfo = ({ weatherNow, weatherToday, weatherComingDays }: any) => {
+  const weatherNowContent = generateWeatherNow(weatherNow)
+  const weatherTodayContent = generateWeatherToday(weatherToday)
+  const weatherComingDaysContent = generateWeatherComingDays(weatherComingDays)
 
-const WeatherInfo = () => {
   return (
     <section className='scrollbar-hidden grid snap-x snap-mandatory grid-cols-[repeat(3,100%)] gap-6 overflow-x-scroll rounded-t-2xl bg-white py-6 lg:grid-cols-[minmax(0,1fr),2px,minmax(0,1fr),2px,minmax(0,1fr)] lg:px-20'>
       <InfoSection
         cardType='horizontal-compact'
         title='Weather now'
-        content={testWeather}
+        content={weatherNowContent}
       />
       <Separator.Root
         decorative={true}
@@ -28,7 +29,7 @@ const WeatherInfo = () => {
       <InfoSection
         cardType='vertical'
         title='Weather today'
-        content={testWeather}
+        content={weatherTodayContent}
       />
       <Separator.Root
         decorative={true}
@@ -38,7 +39,7 @@ const WeatherInfo = () => {
       <InfoSection
         cardType='horizontal-wide'
         title='Weather coming days'
-        content={testWeather}
+        content={weatherComingDaysContent}
       />
     </section>
   )
