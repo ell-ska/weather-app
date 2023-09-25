@@ -7,7 +7,7 @@ import { getWeather } from '@/lib/api-routes'
 export const revalidate = 60
 
 const Home = async () => {
-  const weather = await getWeather('stockholm')
+  const weather = await getWeather('stockholmm')
 
   return (
     <main className='flex min-h-screen flex-col'>

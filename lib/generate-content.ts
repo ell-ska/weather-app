@@ -8,24 +8,24 @@ const generateWeatherNow = (weather: any) => {
     {
       icon: Thermometer,
       title: 'Feels like',
-      value: `${weather.feelslike_c.toFixed()}°`,
+      value: `${weather?.feelslike_c.toFixed()}°`,
     },
     {
       icon: Wind,
       title: 'Wind',
-      value: `${weather.wind_kph.toFixed()} km/h`,
+      value: `${weather?.wind_kph.toFixed()} km/h`,
     },
     {
       icon: Umbrella,
       title: 'Precipitation',
-      value: `${weather.precip_mm.toFixed()} mm`,
+      value: `${weather?.precip_mm.toFixed()} mm`,
     },
-    { icon: Droplet, title: 'Humidity', value: `${weather.humidity} %` },
+    { icon: Droplet, title: 'Humidity', value: `${weather?.humidity} %` },
   ]
 }
 
 const generateWeatherToday = (weather: any) => {
-  return weather.hour
+  return weather?.hour
     .filter((hour: any) => isFuture(new Date(hour.time)))
     .map((hour: any) => {
       const hours = new Date(hour.time).getHours()
@@ -45,7 +45,7 @@ const generateWeatherToday = (weather: any) => {
 }
 
 const generateWeatherComingDays = (weather: any) => {
-  return weather.map((day: any) => ({
+  return weather?.map((day: any) => ({
     icon: weatherMap.find(item => item.code === day.day.condition.code)?.icon,
     title: format(new Date(day.date), 'EEEE'),
     value: `${day.day.maxtemp_c.toFixed()}°/${day.day.mintemp_c.toFixed()}°`,

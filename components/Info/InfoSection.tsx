@@ -12,7 +12,7 @@ type InfoSectionProps = {
 
 const InfoSection = ({ cardType, title, content }: InfoSectionProps) => {
   const contentMap = (): JSX.Element[] => {
-    return content.map(({ icon, title, value }) => (
+    return content?.map(({ icon, title, value }) => (
       <InfoCard
         key={title}
         icon={icon}

@@ -11,7 +11,9 @@ const BackgroundImage = ({ conditionCode }: BackgroundImageProps) => {
     <div
       className='absolute inset-0 -z-10 bg-cover bg-center bg-blend-overlay'
       style={{
-        backgroundImage: `url(${condition?.image.src}), linear-gradient(#ffffff33,#ffffff33)`,
+        backgroundImage: `url(${
+          condition?.image.src || weatherMap[0].image.src
+        }), linear-gradient(#ffffff33,#ffffff33)`,
       }}
     />
   )

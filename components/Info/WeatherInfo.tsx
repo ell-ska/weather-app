@@ -14,6 +14,9 @@ const WeatherInfo = ({ weatherNow, weatherToday, weatherComingDays }: any) => {
   const weatherTodayContent = generateWeatherToday(weatherToday)
   const weatherComingDaysContent = generateWeatherComingDays(weatherComingDays)
 
+  if (!weatherNowContent || !weatherTodayContent || !weatherComingDaysContent)
+    return null
+
   return (
     <section className='scrollbar-hidden grid snap-x snap-mandatory grid-cols-[repeat(3,100%)] gap-6 overflow-x-scroll rounded-t-2xl bg-white py-6 lg:grid-cols-[minmax(0,1fr),2px,minmax(0,1fr),2px,minmax(0,1fr)] lg:px-20'>
       <InfoSection
