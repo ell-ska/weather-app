@@ -1,7 +1,9 @@
+import { type LucideIcon } from 'lucide-react'
+
 import IconWithBackground from './IconWithBackground'
 
 type InfoContent = {
-  icon: React.ReactNode
+  icon: LucideIcon
   title: string
   value: string
 }

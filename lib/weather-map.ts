@@ -12,6 +12,7 @@ import {
   CloudSun,
   Cloud,
   Cloudy,
+  Moon,
   Snowflake,
   Sun,
   Zap,
@@ -32,6 +33,7 @@ export type Weather = {
   code: number
   desc: string
   icon: LucideIcon
+  nightIcon?: LucideIcon
   image: StaticImageData
 }
 
@@ -40,6 +42,7 @@ export const weatherMap: Weather[] = [
     code: 1000,
     desc: 'Sunny',
     icon: Sun,
+    nightIcon: Moon,
     image: sunny,
   },
   {
