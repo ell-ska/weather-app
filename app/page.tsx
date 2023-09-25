@@ -1,7 +1,11 @@
 import CurrentWeather from '@/components/CurrentWeather'
 import WeatherInfo from '@/components/Info/WeatherInfo'
+import { getStartCityCurrentWeather } from '@/lib/api-routes'
 
-export default function Home() {
+const Home = async () => {
+  const weather = await getStartCityCurrentWeather()
+  console.log(weather)
+
   return (
     <main className='flex min-h-screen flex-col'>
       <CurrentWeather />
@@ -9,3 +13,5 @@ export default function Home() {
     </main>
   )
 }
+
+export default Home
