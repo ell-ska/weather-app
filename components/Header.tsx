@@ -1,5 +1,9 @@
+'use client'
+
 import { format, isToday, isYesterday } from 'date-fns'
 import { Menu, Plus } from 'lucide-react'
+
+import { useModal } from '@/hooks/use-modal'
 
 type HeaderProps = {
   city: string | null
@@ -7,6 +11,8 @@ type HeaderProps = {
 }
 
 const Header = ({ city, time }: HeaderProps) => {
+  const { onOpen } = useModal()
+
   const currentDate = time && new Date(time)
   const date =
     currentDate &&
@@ -23,10 +29,10 @@ const Header = ({ city, time }: HeaderProps) => {
         <span>{date}</span>
       </div>
       <div className='flex gap-4'>
-        <button>
+        <button onClick={() => onOpen('add')}>
           <Plus />
         </button>
-        <button>
+        <button onClick={() => onOpen('overview')}>
           <Menu />
         </button>
       </div>
