@@ -1,9 +1,9 @@
 'use client'
 
-import { format, isToday, isYesterday } from 'date-fns'
 import { Menu, Plus } from 'lucide-react'
 
 import { useModal } from '@/hooks/use-modal'
+import { formatDate } from '@/lib/utils'
 
 type HeaderProps = {
   city: string | null
@@ -13,14 +13,7 @@ type HeaderProps = {
 const Header = ({ city, time }: HeaderProps) => {
   const { onOpen } = useModal()
 
-  const currentDate = time && new Date(time)
-  const date =
-    currentDate &&
-    (isToday(currentDate)
-      ? `Today, ${format(currentDate, 'HH:mm')}`
-      : isYesterday(currentDate)
-      ? `Yesterday, ${format(currentDate, 'HH:mm')}`
-      : format(currentDate, 'EEE MMM dd, HH:mm'))
+  const date = time && formatDate(time)
 
   return (
     <header className='absolute flex w-full items-center justify-between px-6 pt-8 lg:px-20 lg:pt-12'>
