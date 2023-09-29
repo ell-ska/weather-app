@@ -17,7 +17,7 @@ const CurrentWeather = ({ condition, temperature }: CurrentWeatherProps) => {
           {Icon && <Icon size={32} />}
         </div>
         <h4 className='text-8xl font-bold'>
-          {temperature && `${temperature}°`}
+          {temperature && `${temperature.toFixed()}°`}
         </h4>
       </div>
     </section>

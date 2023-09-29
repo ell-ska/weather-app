@@ -2,8 +2,7 @@
 
 import { useEffect, useState } from 'react'
 
-import AddModal from '@/components/modals/AddModal'
-import OverviewModal from '@/components/modals/OverviewModal'
+import SearchModal from '@/components/modals/SearchModal'
 
 const ModalProvider = () => {
   const [isMounted, setIsMounted] = useState(false)
@@ -16,8 +15,7 @@ const ModalProvider = () => {
 
   return (
     <>
-      <AddModal />
-      <OverviewModal />
+      <SearchModal />
     </>
   )
 }

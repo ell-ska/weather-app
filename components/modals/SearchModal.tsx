@@ -24,7 +24,7 @@ export type SearchResponse = {
 
 const AddModal = () => {
   const { isOpen, type, onClose } = useModal()
-  const isModalOpen = isOpen && type === 'add'
+  const isModalOpen = isOpen && type === 'search'
 
   const [search, setSearch] = useState('')
   const [searchResult, setSearchResult] = useState<SearchResponse | null>(null)
@@ -78,7 +78,9 @@ const AddModal = () => {
               </button>
             </Dialog.Close>
           </nav>
-          {searchResult && <CityCard type={'searchResult'} {...searchResult} />}
+          {searchResult && (
+            <CityCard closeModal={closeModal} {...searchResult} />
+          )}
         </Dialog.Content>
       </Dialog.Portal>
     </Dialog.Root>
