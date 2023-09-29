@@ -4,7 +4,6 @@ import { Plus } from 'lucide-react'
 import { weatherMap } from '@/lib/weather-map'
 import { formatTime } from '@/lib/utils'
 import { type SearchResponse } from '@/components/modals/SearchModal'
-import { useModal } from '@/hooks/use-modal'
 
 type CityCardProps = SearchResponse & { closeModal: () => void }
 
@@ -14,26 +13,9 @@ const CityCard = ({ closeModal, location, weather }: CityCardProps) => {
 
   const router = useRouter()
 
-  // const addCity = (newCity: string) => {
-  //   try {
-  //     const storedCities = localStorage.getItem('cities')
-
-  //     if (!storedCities) {
-  //       const newCities = [newCity]
-  //       localStorage.setItem('cities', JSON.stringify(newCities))
-  //     } else {
-  //       const oldCities: string[] = JSON.parse(storedCities)
-  //       if (oldCities.includes(newCity)) throw Error('City already saved')
-
-  //       localStorage.setItem('cities', JSON.stringify([...oldCities, newCity]))
-  //     }
-  //   } catch (error) {
-  //     console.log(error)
-  //   }
-  // }
-
   const changeCity = () => {
     closeModal()
+    // console.log(encodeURI(location?.name.toLowerCase()))
     router.push(`/${location?.name.toLowerCase()}`)
   }
 
