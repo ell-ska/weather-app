@@ -18,6 +18,7 @@ const getWeather = async (city: string) => {
 
     return { data, status, statusText }
   } catch (error: any) {
+    console.log(error)
     return error.response
   }
 }
