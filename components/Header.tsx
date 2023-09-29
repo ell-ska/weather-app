@@ -1,6 +1,6 @@
 'use client'
 
-import { Menu, Plus } from 'lucide-react'
+import { Search } from 'lucide-react'
 
 import { useModal } from '@/hooks/use-modal'
 import { formatDate } from '@/lib/utils'
@@ -22,11 +22,8 @@ const Header = ({ city, time }: HeaderProps) => {
         <span>{date}</span>
       </div>
       <div className='flex gap-4'>
-        <button onClick={() => onOpen('add')}>
-          <Plus />
-        </button>
-        <button onClick={() => onOpen('overview')}>
-          <Menu />
+        <button onClick={() => onOpen('search')}>
+          <Search />
         </button>
       </div>
     </header>

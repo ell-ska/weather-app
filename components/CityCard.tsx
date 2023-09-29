@@ -1,30 +1,40 @@
-import { weatherMap } from '@/lib/weather-map'
-import { formatTime } from '@/lib/utils'
-import { type SearchResponse } from '@/components/modals/AddModal'
+import { useRouter } from 'next/navigation'
 import { Plus } from 'lucide-react'
 
-type CityCardProps = SearchResponse & { type: 'searchResult' }
+import { weatherMap } from '@/lib/weather-map'
+import { formatTime } from '@/lib/utils'
+import { type SearchResponse } from '@/components/modals/SearchModal'
+import { useModal } from '@/hooks/use-modal'
 
-const CityCard = ({ type, location, weather }: CityCardProps) => {
+type CityCardProps = SearchResponse & { closeModal: () => void }
+
+const CityCard = ({ closeModal, location, weather }: CityCardProps) => {
   const Icon = weatherMap.find(item => item.code === weather?.condition?.code)
     ?.icon
 
-  const addCity = (newCity: string) => {
-    try {
-      const storedCities = localStorage.getItem('cities')
+  const router = useRouter()
 
-      if (!storedCities) {
-        const newCities = [newCity]
-        localStorage.setItem('cities', JSON.stringify(newCities))
-      } else {
-        const oldCities: string[] = JSON.parse(storedCities)
-        if (oldCities.includes(newCity)) throw Error('City already saved')
+  // const addCity = (newCity: string) => {
+  //   try {
+  //     const storedCities = localStorage.getItem('cities')
 
-        localStorage.setItem('cities', JSON.stringify([...oldCities, newCity]))
-      }
-    } catch (error) {
-      console.log(error)
-    }
+  //     if (!storedCities) {
+  //       const newCities = [newCity]
+  //       localStorage.setItem('cities', JSON.stringify(newCities))
+  //     } else {
+  //       const oldCities: string[] = JSON.parse(storedCities)
+  //       if (oldCities.includes(newCity)) throw Error('City already saved')
+
+  //       localStorage.setItem('cities', JSON.stringify([...oldCities, newCity]))
+  //     }
+  //   } catch (error) {
+  //     console.log(error)
+  //   }
+  // }
+
+  const changeCity = () => {
+    closeModal()
+    router.push(`/${location?.name.toLowerCase()}`)
   }
 
   return (
@@ -40,15 +50,13 @@ const CityCard = ({ type, location, weather }: CityCardProps) => {
           <h4 className='text-5xl font-bold'>{weather?.temp}°</h4>
         </div>
       </div>
-      {type === 'searchResult' && (
-        <button
-          className='mt-4 flex w-full justify-center gap-2'
-          onClick={() => addCity(location?.name)}
-        >
-          <span>Add city</span>
-          <Plus />
-        </button>
-      )}
+      <button
+        className='mt-4 flex w-full justify-center gap-2'
+        onClick={changeCity}
+      >
+        <span>Change city</span>
+        <Plus />
+      </button>
     </>
   )
 }

@@ -1,6 +1,6 @@
 import { create } from 'zustand'
 
-type modalType = 'add' | 'overview'
+type modalType = 'search'
 
 type modal = {
   type: modalType | null
