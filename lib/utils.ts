@@ -16,3 +16,10 @@ export const formatDate = (date: string | number) => {
     ? `Yesterday, ${format(currentDate, 'HH:mm')}`
     : format(currentDate, 'EEE MMM dd, HH:mm')
 }
+
+export const formatTime = (time: string | number) => {
+  const currentTime = new Date(time)
+  if (!isValid(currentTime)) return null
+
+  return format(currentTime, 'HH:mm')
+}
