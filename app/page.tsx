@@ -2,12 +2,12 @@ import BackgroundImage from '@/components/BackgroundImage'
 import Header from '@/components/Header'
 import CurrentWeather from '@/components/CurrentWeather'
 import WeatherInfo from '@/components/Info/WeatherInfo'
-import { getWeather } from '@/lib/api-routes'
+import { getWeatherWithForecast } from '@/lib/api-routes'
 
 export const revalidate = 60
 
 const Home = async () => {
-  const weather = await getWeather('stockholm')
+  const weather = await getWeatherWithForecast('stockholm')
 
   return (
     <main className='flex min-h-screen flex-col'>

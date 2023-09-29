@@ -3,7 +3,7 @@ import axios from 'axios'
 const BASE_URL = 'https://api.weatherapi.com/v1'
 const API_KEY = process.env.API_KEY
 
-const getWeather = async (city: string) => {
+const getWeatherWithForecast = async (city: string) => {
   try {
     const { data, status, statusText } = await axios.get(
       BASE_URL + '/forecast.json',
@@ -19,8 +19,7 @@ const getWeather = async (city: string) => {
     return { data, status, statusText }
   } catch (error: any) {
     console.log(error)
-    return error.response
   }
 }
 
-export { getWeather }
+export { getWeatherWithForecast }
