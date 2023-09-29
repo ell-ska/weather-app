@@ -78,7 +78,7 @@ const AddModal = () => {
               </button>
             </Dialog.Close>
           </nav>
-          {searchResult && <CityCard {...searchResult} />}
+          {searchResult && <CityCard type={'searchResult'} {...searchResult} />}
         </Dialog.Content>
       </Dialog.Portal>
     </Dialog.Root>
