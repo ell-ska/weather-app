@@ -1,3 +1,5 @@
+import { redirect } from 'next/navigation'
+
 import { getWeatherWithForecast } from '@/lib/api-routes'
 import BackgroundImage from '@/components/BackgroundImage'
 import Header from '@/components/Header'
@@ -13,7 +15,9 @@ type HomeProps = {
 }
 
 const Home = async ({ params: { city } }: HomeProps) => {
-  const weather = await getWeatherWithForecast(city)
+  const weather = await getWeatherWithForecast(decodeURI(city))
+
+  if (!weather) redirect('/stockholm')
 
   return (
     <main className='flex min-h-screen flex-col'>

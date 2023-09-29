@@ -19,10 +19,12 @@ export const GET = async (req: Request) => {
       })
     }
 
+    const city = decodeURI(query)
+
     const { data } = await axios.get(BASE_URL + '/current.json', {
       params: {
         key: API_KEY,
-        q: query,
+        q: city,
       },
     })
 
